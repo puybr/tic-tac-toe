@@ -6,8 +6,10 @@ const gameBoard = (function () {
         const container = document.querySelector('#container');
         for (let i = 0; i < 9; i++) {
             const content = document.createElement('div');
-            content.classList.add('content');
+            content.classList.add('box');
             container.appendChild(content);
+            const newGameObject = Object.create(gameObject);
+            console.log(newGameObject.player1)
         }
 
     }
@@ -16,6 +18,11 @@ const gameBoard = (function () {
         generateBoard
     };
 })();
+
+const gameObject = {
+    player1: 'x',
+    player2: 'o'
+};
 
 gameBoard.sayHi();
 gameBoard.generateBoard();
