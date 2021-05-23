@@ -8,8 +8,8 @@ const gameBoard = (function () {
             const content = document.createElement('div');
             content.classList.add('box');
             container.appendChild(content);
-            const newGameObject = Object.create(gameObject);
-            console.log(newGameObject.player1)
+            gameArray.push(gameObject);
+    
         }
 
     }
@@ -18,6 +18,9 @@ const gameBoard = (function () {
         generateBoard
     };
 })();
+
+let gameArray = [];
+console.log(gameArray)
 
 const gameObject = {
     player1: 'x',
