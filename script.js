@@ -9,9 +9,10 @@ const gameBoard = (function () {
             content.classList.add('box');
             container.appendChild(content);
             gameArray.push(gameObject);
-    
-        }
-
+        } // end of for loop
+    }
+    const playGame = () => {
+        console.log('Playing the game ...')
     }
     return {
         sayHi,
@@ -29,3 +30,11 @@ const gameObject = {
 
 gameBoard.sayHi();
 gameBoard.generateBoard();
+
+const boxes = Array.from(document.getElementsByClassName('box'));
+boxes.forEach((box) => {
+    box.addEventListener('click', addXMark);
+    function addXMark(e) {
+        e.target.innerText = 'x';
+    }
+});
