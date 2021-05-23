@@ -1,0 +1,27 @@
+html {
+    font-family: sans-serif;
+    text-align: center;
+  }
+  
+  #container {
+    margin-top: 25px;
+    margin: auto;
+    display: inline-grid;
+    grid-template-columns: repeat(3, 2fr);
+    grid-template-rows: repeat(3, 2fr);
+    border: 5px solid black;
+    border-radius: 5px;
+    height: 575px;
+    width: 575px;
+  }
+  
+  .content {
+    background-color: white;
+    border: 1px solid black;
+  
+  }
+  
+  .box {
+    background-color: gray;
+    border: 1px solid black;
+  }
