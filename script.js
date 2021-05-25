@@ -28,9 +28,7 @@ boxes.forEach((box) => {box.addEventListener('click', addPlayerMark);});
 
 // player factory
 const playerFactory = mark => {
-    const addMark = () => {
-        console.log(`${mark}`);
-    };
+    const addMark = () => { console.log(`${mark}`); };
     selectedMark = mark;
     return { addMark, selectedMark };
     };
@@ -39,6 +37,7 @@ const playerFactory = mark => {
 player1 = playerFactory('x');
 player2 = playerFactory('o');
 let player1Turn = true;
+let gameArray = [];
 
 function addPlayerMark(e) { //on click event
     console.log(player1Turn);
@@ -53,4 +52,6 @@ function addPlayerMark(e) { //on click event
         player1Turn = true;
     }
     e.target.removeEventListener('click', addPlayerMark);
+    gameArray.push(e.target.id);
+    console.log(gameArray);
 };
