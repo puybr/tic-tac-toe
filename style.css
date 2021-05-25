@@ -9,16 +9,16 @@ html {
     margin-top: 25px;
     margin: auto;
     display: inline-grid;
-    grid-template-columns: repeat(3, 2fr);
-    grid-template-rows: repeat(3, 2fr);
-    border: 1px solid white;
-    border-radius: 5px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    border: 1px solid;
+    border-radius: 1px;
     height: 575px;
     width: 575px;
   }
   
   .box {
-    border: 1px solid white;
+    border: 1px solid;
     font-size: 10em;
   
   }

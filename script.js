@@ -9,32 +9,39 @@ const gameBoard = (function () {
             content.classList.add('box');
             container.appendChild(content);
             gameArray.push(gameObject);
+            content.setAttribute("id", i);
         } // end of for loop
     }
+    console.log(container)
     const playGame = () => {
         console.log('Playing the game ...')
     }
-    return {
-        sayHi,
-        generateBoard
-    };
+    return { sayHi, generateBoard };
 })();
 
 let gameArray = [];
-console.log(gameArray)
-
 const gameObject = {
-    player1: 'x',
-    player2: 'o'
+    player1Mark: 'x',
+    player2Mark: 'o'
 };
 
 gameBoard.sayHi();
 gameBoard.generateBoard();
 
+// Event LISTENERS
 const boxes = Array.from(document.getElementsByClassName('box'));
-boxes.forEach((box) => {
-    box.addEventListener('click', addXMark);
-    function addXMark(e) {
-        e.target.innerText = 'x';
-    }
-});
+boxes.forEach((box) => {box.addEventListener('click', addMark);});
+player1Turn = true;
+
+function addMark(e) {
+    // player factory
+    const playerFactory = mark => {
+        const addXMark = () => {
+            console.log(`Player ${mark} is here`);
+            e.target.innerText = mark;
+        };
+        return { addXMark };
+    };
+player1 = playerFactory('x');
+player1.addXMark();
+};
