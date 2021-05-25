@@ -25,29 +25,30 @@ gameBoard.generateBoard();
 // Event LISTENERS
 const boxes = Array.from(document.getElementsByClassName('box'));
 boxes.forEach((box) => {box.addEventListener('click', addPlayerMark);});
-let player1Turn = true;
 
 // player factory
 const playerFactory = mark => {
     const addMark = () => {
-    console.log(`${mark} Selected`);
-};
-return { addMark };
-};
+        console.log(`${mark}`);
+    };
+    selectedMark = mark;
+    return { addMark, selectedMark };
+    };
 
 // create player objects
 player1 = playerFactory('x');
 player2 = playerFactory('o');
+let player1Turn = true;
 
 function addPlayerMark(e) { //on click event
     console.log(player1Turn);
     if (player1Turn) {
-        e.target.innerText = 'x';
+        e.target.innerText = player1.selectedMark;
         player1.addMark();
         player1Turn = false;
     }
     else {
-        e.target.innerText = 'o';
+        e.target.innerText = player2.selectedMark;;
         player2.addMark();
         player1Turn = true;
     }
