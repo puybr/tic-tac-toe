@@ -35,10 +35,9 @@ const playerFactory = mark => {
 return { addMark };
 };
 
-
+// create player objects
 player1 = playerFactory('x');
 player2 = playerFactory('o');
-console.log(player1Turn);
 
 function addPlayerMark(e) { //on click event
     console.log(player1Turn);
@@ -46,12 +45,11 @@ function addPlayerMark(e) { //on click event
         e.target.innerText = 'x';
         player1.addMark();
         player1Turn = false;
-        console.log(player1Turn);
     }
     else {
         e.target.innerText = 'o';
         player2.addMark();
         player1Turn = true;
-        console.log(player1Turn);
     }
+    e.target.removeEventListener('click', addPlayerMark);
 };
