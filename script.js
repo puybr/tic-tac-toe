@@ -10,17 +10,29 @@ const gameBoard = (function () {
             content.setAttribute("id", i);        
         } // end of for loop
     }
+    const filterArray = () => {
+        let xArray = [];
+        let oArray = [];
+        for (let i = 0; i < gameArray.length; i++) {
+            if (gameArray[i] % 2 === 0) {
+            xArray.push(gameArray[i]);
+            } else oArray.push(gameArray[i])
+        } 
+        console.log(xArray);
+        console.log(oArray);
+
+    }
     const checkWinner = () => {
         winningXCombinations.forEach((combination) => {
             if (combination = gameArray) {
                 declareWinner('X');
-            }
+            } else return;
         });
     }
     const declareWinner = mark => {
         console.log(mark + ' WINS')
     }
-    return { generateBoard, checkWinner };
+    return { generateBoard, checkWinner, filterArray };
 })();
 
 gameBoard.generateBoard();
@@ -28,6 +40,8 @@ gameBoard.generateBoard();
 // Event LISTENERS
 const boxes = Array.from(document.getElementsByClassName('box'));
 boxes.forEach((box) => {box.addEventListener('click', addPlayerMark);});
+
+
 
 // player factory
 const playerFactory = mark => {
@@ -63,5 +77,6 @@ function addPlayerMark(e) { //on click event
     console.log(gameArray);
     if (gameArray.length === 9) {
         gameBoard.checkWinner();
+        gameBoard.filterArray();
     }
 };
