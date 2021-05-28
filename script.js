@@ -13,18 +13,20 @@ const gameBoard = (function () {
     const filterArray = () => {
         let xArray = [];
         let oArray = [];
-        for (let i = 0; i < gameArray.length; i++) {
-            if (gameArray[i] % 2 === 0) {
+        for (let i = 0; i < gameArray.length; i=i+2) {
             xArray.push(gameArray[i]);
-            } else oArray.push(gameArray[i])
-        } 
-        console.log(xArray);
-        console.log(oArray);
+        }
+        console.log(xArray)
+
+        if (xArray.length > 3) {
+            checkWinner(xArray);
+            console.log(xArray)
+        }
 
     }
-    const checkWinner = () => {
+    const checkWinner = arr => {
         winningXCombinations.forEach((combination) => {
-            if (combination = gameArray) {
+            if (combination = arr) {
                 declareWinner('X');
             } else return;
         });
@@ -32,7 +34,7 @@ const gameBoard = (function () {
     const declareWinner = mark => {
         console.log(mark + ' WINS')
     }
-    return { generateBoard, checkWinner, filterArray };
+    return { generateBoard, filterArray };
 })();
 
 gameBoard.generateBoard();
@@ -56,8 +58,8 @@ player2 = playerFactory('o');
 let player1Turn = true;
 let gameArray = [];
 winningXCombinations = [
-    ["0", "1", "2", "3", "4", "5", "6", "7", "8"],
-    ["3", "5", "6", "8", "0", "2", "1", "4", "7"]
+    ["0", "4", "8"],
+    ["2", "4", "6"]
 ];
 
 function addPlayerMark(e) { //on click event
@@ -75,8 +77,5 @@ function addPlayerMark(e) { //on click event
     e.target.removeEventListener('click', addPlayerMark);
     gameArray.push(e.target.id);
     console.log(gameArray);
-    if (gameArray.length === 9) {
-        gameBoard.checkWinner();
-        gameBoard.filterArray();
-    }
+    gameBoard.filterArray();
 };
