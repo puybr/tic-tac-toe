@@ -16,17 +16,16 @@ const gameBoard = (function () {
         for (let i = 0; i < gameArray.length; i=i+2) {
             xArray.push(gameArray[i]);
         }
-        console.log(xArray)
-
-        if (xArray.length > 3) {
-            checkWinner(xArray);
-            console.log(xArray)
-        }
+        checkWinner(xArray);
 
     }
     const checkWinner = arr => {
+        const winningXCombinations = [
+            ["0", "4", "8"],
+            ["2", "4", "6"]
+        ];
         winningXCombinations.forEach((combination) => {
-            if (combination = arr) {
+            if (JSON.stringify(combination) === JSON.stringify(arr)) {
                 declareWinner('X');
             } else return;
         });
@@ -57,13 +56,8 @@ player1 = playerFactory('x');
 player2 = playerFactory('o');
 let player1Turn = true;
 let gameArray = [];
-winningXCombinations = [
-    ["0", "4", "8"],
-    ["2", "4", "6"]
-];
 
 function addPlayerMark(e) { //on click event
-    console.log(player1Turn);
     if (player1Turn) {
         e.target.innerText = player1.selectedMark;
         player1.addMark();
@@ -76,6 +70,5 @@ function addPlayerMark(e) { //on click event
     }
     e.target.removeEventListener('click', addPlayerMark);
     gameArray.push(e.target.id);
-    console.log(gameArray);
     gameBoard.filterArray();
 };
