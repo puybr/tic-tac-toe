@@ -1,7 +1,6 @@
 // The Gameboard Module
 const gameBoard = (function () {
     'use strict'
-    const sayHi = () => console.log('Hi, this is a new gameboard!');
     const generateBoard = () => {
         const container = document.querySelector('#container');
         for (let i = 0; i < 9; i++) {
@@ -11,15 +10,19 @@ const gameBoard = (function () {
             content.setAttribute("id", i);        
         } // end of for loop
     }
-    const playGame = () => {
-        console.log('Playing the game ...')
+    const checkWinner = () => {
+        winningXCombinations.forEach((combination) => {
+            if (combination = gameArray) {
+                declareWinner('X');
+            }
+        });
     }
-    playGame();
-    return { sayHi, generateBoard };
+    const declareWinner = mark => {
+        console.log(mark + ' WINS')
+    }
+    return { generateBoard, checkWinner };
 })();
 
-
-gameBoard.sayHi();
 gameBoard.generateBoard();
 
 // Event LISTENERS
@@ -38,6 +41,10 @@ player1 = playerFactory('x');
 player2 = playerFactory('o');
 let player1Turn = true;
 let gameArray = [];
+winningXCombinations = [
+    ["0", "1", "2", "3", "4", "5", "6", "7", "8"],
+    ["3", "5", "6", "8", "0", "2", "1", "4", "7"]
+];
 
 function addPlayerMark(e) { //on click event
     console.log(player1Turn);
@@ -54,4 +61,7 @@ function addPlayerMark(e) { //on click event
     e.target.removeEventListener('click', addPlayerMark);
     gameArray.push(e.target.id);
     console.log(gameArray);
+    if (gameArray.length === 9) {
+        gameBoard.checkWinner();
+    }
 };
