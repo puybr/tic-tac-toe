@@ -1,24 +1,35 @@
 // The Gameboard Module
 const gameBoard = (function () {
     'use strict'
-    const generateBoard = () => {
-        const container = document.querySelector('#container');
+    const generateBoard = () => {  
         for (let i = 0; i < 9; i++) {
             const content = document.createElement('div');
             content.classList.add('box');
             container.appendChild(content);
-            content.setAttribute("id", i);        
+            content.setAttribute("id", i);     
         } // end of for loop
+        const boxes = Array.from(document.getElementsByClassName('box')); // Event Listeners
+        boxes.forEach((box) => {box.addEventListener('click', addPlayerMark);});
+        const winnerHeader = document.querySelector('#winner');
+        winnerHeader.innerHTML = '';
     }
+    const restartBoard = () => {
+        console.log('restart');
+        console.log(container);
+        container.innerHTML = '';
+        gameArray = [];
+        generateBoard();
+
+    }
+
     const splitArray = () => {
         let xArray = [];
         for (let i = 0; i < gameArray.length; i=i+2) {
             xArray.push(gameArray[i]);
         }
         const oArray = gameArray.filter(val => !xArray.includes(val));
-        console.log(oArray);
         checkWinner(xArray.sort());
-        checkWinner(oArray.sort())
+        checkWinner(oArray.sort());
 
     }
     const checkWinner = arr => {
@@ -38,7 +49,6 @@ const gameBoard = (function () {
                     const winnerMark = document.getElementById(combo);
                     winnerMark.setAttribute('style', 'background-color: grey');
                 })
-
                 declareWinner(winner);
             } else return;
         });
@@ -50,27 +60,28 @@ const gameBoard = (function () {
         winner.innerHTML = `${mark} WINS!`;
         console.log(`${mark} WINS!`);
     }
-    return { generateBoard, splitArray };
+    return { generateBoard, splitArray, restartBoard };
 })();
 
 gameBoard.generateBoard();
 
-// Event LISTENERS
-const boxes = Array.from(document.getElementsByClassName('box'));
-boxes.forEach((box) => {box.addEventListener('click', addPlayerMark);});
+// Restart Game
+const restartGame = document.querySelector('#restart');
+restartGame.addEventListener('click', restart);
+function restart() {
+    gameBoard.restartBoard();
+}
 
-
-
-// player factory
+// Player Factory
 const playerFactory = mark => {
     const addMark = () => { console.log(`${mark}`); };
     selectedMark = mark;
     return { addMark, selectedMark };
     };
 
-// create player objects
-player1 = playerFactory('x');
-player2 = playerFactory('o');
+// Create Player Objects
+player1 = playerFactory('X');
+player2 = playerFactory('O');
 let player1Turn = true;
 let gameArray = [];
 
