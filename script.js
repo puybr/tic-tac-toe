@@ -14,8 +14,6 @@ const gameBoard = (function () {
         winnerHeader.innerHTML = '';
     }
     const restartBoard = () => {
-        console.log('restart');
-        console.log(container);
         container.innerHTML = '';
         gameArray = [];
         generateBoard();
