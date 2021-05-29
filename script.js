@@ -15,7 +15,10 @@ const gameBoard = (function () {
         for (let i = 0; i < gameArray.length; i=i+2) {
             xArray.push(gameArray[i]);
         }
+        const oArray = gameArray.filter(val => !xArray.includes(val));
+        console.log(oArray);
         checkWinner(xArray.sort());
+        checkWinner(oArray.sort())
 
     }
     const checkWinner = arr => {
@@ -27,7 +30,8 @@ const gameBoard = (function () {
             ["1", "4", "7"]
         ];
         winningCombinations.forEach((combination) => {
-            if (JSON.stringify(combination) === JSON.stringify(arr)) {
+            const filteredArray = arr.filter(val => combination.includes(val));
+            if (JSON.stringify(combination) === JSON.stringify(filteredArray)) {
                 const getElement =  document.getElementById(combination[0]);
                 const winner = getElement.innerText
                 combination.forEach((combo) => {
