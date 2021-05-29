@@ -10,30 +10,42 @@ const gameBoard = (function () {
             content.setAttribute("id", i);        
         } // end of for loop
     }
-    const filterArray = () => {
+    const splitArray = () => {
         let xArray = [];
-        let oArray = [];
         for (let i = 0; i < gameArray.length; i=i+2) {
             xArray.push(gameArray[i]);
         }
-        checkWinner(xArray);
+        checkWinner(xArray.sort());
 
     }
     const checkWinner = arr => {
-        const winningXCombinations = [
+        const winningCombinations = [
             ["0", "4", "8"],
-            ["2", "4", "6"]
+            ["2", "4", "6"],
+            ["0", "3", "6"],
+            ["1", "4", "7"]
         ];
-        winningXCombinations.forEach((combination) => {
+        winningCombinations.forEach((combination) => {
             if (JSON.stringify(combination) === JSON.stringify(arr)) {
-                declareWinner('X');
+                const getElement =  document.getElementById(combination[0]);
+                const winner = getElement.innerText
+                combination.forEach((combo) => {
+                    const winnerMark = document.getElementById(combo);
+                    winnerMark.setAttribute('style', 'background-color: grey');
+                })
+
+                declareWinner(winner);
             } else return;
         });
     }
     const declareWinner = mark => {
-        console.log(mark + ' WINS')
+        const winner = document.createElement('div');
+        const winnerHeader = document.querySelector('#winner');
+        winnerHeader.appendChild(winner);
+        winner.innerHTML = `${mark} WINS!`;
+        console.log(`${mark} WINS!`);
     }
-    return { generateBoard, filterArray };
+    return { generateBoard, splitArray };
 })();
 
 gameBoard.generateBoard();
@@ -70,5 +82,5 @@ function addPlayerMark(e) { //on click event
     }
     e.target.removeEventListener('click', addPlayerMark);
     gameArray.push(e.target.id);
-    gameBoard.filterArray();
+    gameBoard.splitArray();
 };
