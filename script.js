@@ -9,7 +9,7 @@ const gameBoard = (function () {
             content.setAttribute("id", i);     
         } // end of for loop
         const boxes = Array.from(document.getElementsByClassName('box')); // Event Listeners
-        boxes.forEach((box) => {box.addEventListener('click', addPlayerMark);});
+        boxes.forEach((box) => { box.addEventListener('click', addPlayerMark) });
         const winnerHeader = document.querySelector('#winner');
         winnerHeader.innerHTML = '';
     }
@@ -46,7 +46,9 @@ const gameBoard = (function () {
                 combination.forEach((combo) => {
                     const winnerMark = document.getElementById(combo);
                     winnerMark.setAttribute('style', 'background-color: grey');
-                })
+                });
+                const boxes = Array.from(document.getElementsByClassName('box')); // Event Listeners
+                boxes.forEach((box) => { box.removeEventListener('click', addPlayerMark) });
                 declareWinner(winner);
             } else return;
         });
