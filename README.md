@@ -13,4 +13,4 @@
       |     |     
 ```
 
-Play it on [CodePen](https://codepen.io/ghost-goblin/pen/MWpOpEJ)
+🕹️ Play it on [CodePen](https://codepen.io/ghost-goblin/pen/MWpOpEJ)
