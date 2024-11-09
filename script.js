@@ -80,7 +80,7 @@ function restart() {
 // Player Factory
 const playerFactory = mark => {
     const addMark = () => { console.log(`${mark}`); };
-    selectedMark = mark;
+    let selectedMark = mark;
     return { addMark, selectedMark };
     };
 
