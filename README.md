@@ -23,5 +23,3 @@ _____|_____|_____
   -  |  O  |  -  
      |     |     
 ```
-
-🕹️ Play it on [CodePen](https://codepen.io/puybr/pen/MWpOpEJ)
