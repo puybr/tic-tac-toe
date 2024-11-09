@@ -1,3 +1,5 @@
+"use strict";
+
 // The Gameboard Module
 const gameBoard = (function () {
     'use strict'
