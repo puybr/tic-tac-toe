@@ -1,7 +1,6 @@
 # Tic Tac Toe - [Odin Project](https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/tic-tac-toe)
 
 ```sh
-   a     b     c
       |     |     
 a  0  |  1  |  2  
  _____|_____|_____
