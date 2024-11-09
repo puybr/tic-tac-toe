@@ -13,18 +13,16 @@ html {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     border-radius: 1px;
-    height: 400px;
-    width: 400px;
+    height: 375px;
+    width: 375px;
   }
   
   .box {
     border: 1px solid;
     font-size: 3em;
     cursor: pointer;
-  
   }
 
   #restart {
     cursor: pointer;
   }
-  
