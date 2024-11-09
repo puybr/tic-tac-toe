@@ -85,8 +85,8 @@ const playerFactory = mark => {
     };
 
 // Create Player Objects
-player1 = playerFactory('X');
-player2 = playerFactory('O');
+let player1 = playerFactory('X');
+let player2 = playerFactory('O');
 let player1Turn = true;
 let gameArray = [];
 
