@@ -13,8 +13,8 @@ html {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     border-radius: 1px;
-    height: 375px;
-    width: 375px;
+    height: 325px;
+    width: 325px;
   }
   
   .box {
